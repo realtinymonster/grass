@@ -36,9 +36,7 @@ s.connect((remote_ip , port))
 print("Socket Connected to " + host + " on ip " + remote_ip)
  
 #Send some data to remote server
-message = """GET / HTTP/1.1
-
-"""
+message = ("GET / HTTP/1.1\r\n\r\nHost: %s\r\n\r\nUser-Agent: Mozilla/5.0 Grass/%s\r\n\r\n" % host, version) #Host: %s\r\n"
 msgbytes = message.encode("utf-8")
  
 try :
