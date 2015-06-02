@@ -1,11 +1,14 @@
 ##!/bin/python
 import time, random, socket, sys, struct, time
+from tkinter import *
+
+root = Tk()
 
 version = "0.0.1d"
 
 print("Grass Web Browser v%s" % version)
 print("")
-typed = input("Connect to? > ")
+typed = input("Connect to? (No http:// please) > ")
  
 #create an INET, STREAMing socket
 try:
@@ -36,7 +39,8 @@ s.connect((remote_ip , port))
 print("Socket Connected to " + host + " on ip " + remote_ip)
  
 #Send some data to remote server
-message = "GET / HTTP/1.1\r\n\r\nHost: %s\r\n\r\nUser-Agent: Mozilla/5.0 Grass/%s\r\n\r\n" % (host, version) #Host: %s\r\n"
+#message = 'GET / HTTP/1.1\r\n\r\nHost: %s\r\n\r\nUser-Agent: Mozilla/5.0 Grass/%s\r\n\r\n' % (host, version) #Host: %s\r\n"
+message = 'GET / HTTP/1.1\r\n\r\nUser-Agent: Mozilla/5.0 Grass/%s\r\n\r\n' % (version) #Host: %s\r\n"
 msgbytes = message.encode("utf-8")
  
 try :
@@ -92,6 +96,9 @@ print(reply)
 input()
 tmp1 = reply.find('<html')
 test1 = reply[tmp1:]
+w = Label(root, text=test1)
+w.pack()
+root.mainloop()
 print("".join(test1))
  
 #Close the socket
