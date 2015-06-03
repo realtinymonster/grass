@@ -2,9 +2,7 @@
 import time, random, socket, sys, struct, time
 from tkinter import *
 
-root = Tk()
-
-version = "0.0.1d"
+version = "0.0.2d"
 
 print("Grass Web Browser v%s" % version)
 print("")
@@ -96,6 +94,7 @@ print(reply)
 input()
 tmp1 = reply.find('<html')
 test1 = reply[tmp1:]
+root = Tk()
 w = Label(root, text=test1)
 w.pack()
 root.mainloop()
